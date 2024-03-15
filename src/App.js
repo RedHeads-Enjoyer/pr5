@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import {useDispatch, useSelector} from "react-redux";
+import {changeStatus} from "./licenseSlice";
 
 function App() {
+  const dispatch = useDispatch();
+  const checkboxStatus = useSelector((state)=>state.license.status);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>Пользовательское соглашение</h3>
+      <p>lorem  ipsum</p>
+      <input id='check' type='checkbox' onClick={() => dispatch(changeStatus())}/>
+      <label htmlFor='check'>Прочитал</label>
+      <br/>
+      <button disabled={checkboxStatus}>Принять</button>
     </div>
   );
 }
